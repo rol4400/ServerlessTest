@@ -1,8 +1,7 @@
-Welcome to the AWS CodeStar sample web service
-==============================================
+Welcome to the AWS CodeStar sample web application
+==================================================
 
-This sample code helps get you started with a simple Express web service
-deployed by AWS CloudFormation to AWS Lambda and Amazon API Gateway.
+This sample code helps get you started with a simple Node.js web service deployed by AWS CloudFormation to AWS Lambda and Amazon API Gateway.
 
 What's Here
 -----------
@@ -11,11 +10,10 @@ This sample includes:
 
 * README.md - this file
 * buildspec.yml - this file is used by AWS CodeBuild to package your
-  service for deployment to AWS Lambda
-* app.js - this file contains the sample Node.js code for the web service
-* index.js - this file contains the AWS Lambda handler code
+  application for deployment to AWS Lambda
+* index.js - this file contains the sample Node.js code for the web service
 * template.yml - this file contains the AWS Serverless Application Model (AWS SAM) used
-  by AWS CloudFormation to deploy your service to AWS Lambda and Amazon API
+  by AWS CloudFormation to deploy your application to AWS Lambda and Amazon API
   Gateway.
 * tests/ - this directory contains unit tests for your application
 
@@ -24,7 +22,7 @@ What Do I Do Next?
 ------------------
 
 If you have checked out a local copy of your repository you can start making
-changes to the sample code.  We suggest making a small change to app.js first,
+changes to the sample code.  We suggest making a small change to index.js first,
 so you can see how changes pushed to your project's repository are automatically
 picked up by your project pipeline and deployed to AWS Lambda and Amazon API Gateway.
 (You can watch the pipeline progress on your AWS CodeStar project dashboard.)
