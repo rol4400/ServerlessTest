@@ -8,7 +8,7 @@ if (!process.env.NODE_ENV) {
 }
 
 var request = require('supertest');
-var app = require('../../app');
+var app = require('../../api');
 var id, user;
 
 describe('User routes:', function () {

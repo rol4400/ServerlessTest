@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha -r should -R spec",
+        "test": "mocha -r should -R spec app/test/tests.js",
         "dev": "node server.js",
         "deploy-dev": "nuxt build && serverless deploy --stage dev",
         "deploy-dev-fast": "nuxt build && serverless deploy --stage dev --function main",
