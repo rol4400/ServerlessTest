@@ -34,7 +34,7 @@ Pages are rendered on initial page load server-side using nuxt as HTML, for spee
 The app folder contains folders for routes, tests and models. Documentation for these can be found at: https://github.com/biggora/caminte When a new model is added, the routes for it should be imported into the api.js file for them to be used. All api routes are proxied to /api to keep them separate from front-end routes.
 The views folder contains the front-end for the site. These are all vue components; however, the folders and files follow a naming convention enforced by nuxt. Nuxt will automatically generate routes and compile these files. For information on how stylesheets, VueJS components etc. should be implemented check out: https://nuxtjs.org/guide/
 
-To start the development server run "npm run dev". This will build the viewjs files using nuxt, check for code inconsistencies using jslint and start a server on localhost:3000. Most code /app should be able to be changed and tested without restarting the server and any changes to VueJS files should cause nuxt to rebuild.
+To start the development server run "npm run dev". This will build the viewjs files using nuxt, check for code inconsistencies using eslint and start a server on localhost:3000. Most code /app should be able to be changed and tested without restarting the server and any changes to VueJS files should cause nuxt to rebuild.
 
 Deployment
 ------------------
