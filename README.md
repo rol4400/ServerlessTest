@@ -1,4 +1,4 @@
-Welcome to a test serverless application
+Welcome to a test Serverless application
 ==================================================
 
 This is a test application for learning how serverless development works
