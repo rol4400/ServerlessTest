@@ -1,64 +1,41 @@
-Welcome to the AWS CodeStar sample web application
+Welcome to a test serverless application
 ==================================================
 
-This sample code helps get you started with a simple Node.js web service deployed by AWS CloudFormation to AWS Lambda and Amazon API Gateway.
+This is a test application for learning how serverless development works
 
-What's Here
+Libraries Used
 -----------
 
-This sample includes:
+This project uses:
 
-* README.md - this file
-* buildspec.yml - this file is used by AWS CodeBuild to package your
-  application for deployment to AWS Lambda
-* index.js - this file contains the sample Node.js code for the web service
-* template.yml - this file contains the AWS Serverless Application Model (AWS SAM) used
-  by AWS CloudFormation to deploy your application to AWS Lambda and Amazon API
-  Gateway.
-* tests/ - this directory contains unit tests for your application
+* NodeJS
+* Caminte
+* nuxt
+* VueJS 
+* Serverless Framework
+* Express
 
 
-What Do I Do Next?
+Installation
 ------------------
 
-If you have checked out a local copy of your repository you can start making
-changes to the sample code.  We suggest making a small change to index.js first,
-so you can see how changes pushed to your project's repository are automatically
-picked up by your project pipeline and deployed to AWS Lambda and Amazon API Gateway.
-(You can watch the pipeline progress on your AWS CodeStar project dashboard.)
-Once you've seen how that works, start developing your own code, and have fun!
+After cloning the repo run npm install immediately to install all the frameworks necessary
 
-To run your tests locally, go to the root directory of the
-sample code and run the `npm test` command, which
-AWS CodeBuild also runs through your `buildspec.yml` file.
+You may also need to install some of the following global npm packages:
+* Serverless cli
+* VueJS cli (optional, not required)
+* Caminte cli (useful for generating entity models and routes)
+* Others I can't remember that I'll add to this list later
 
-To test your new code during the release process, modify the existing tests or
-add tests to the tests directory. AWS CodeBuild will run the tests during the
-build stage of your project pipeline. You can find the test results
-in the AWS CodeBuild console.
-
-Learn more about AWS CodeBuild and how it builds and tests your application here:
-https://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html
-
-Learn more about AWS Serverless Application Model (AWS SAM) and how it works here:
-https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md
-
-AWS Lambda Developer Guide:
-http://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html
-
-Learn more about AWS CodeStar by reading the user guide, and post questions and
-comments about AWS CodeStar on our forum.
-
-User Guide: http://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
-
-Forum: https://forums.aws.amazon.com/forum.jspa?forumID=248
-
-What Should I Do Before Running My Project in Production?
+Development
 ------------------
+Pages are rendered on initial page load server-side using nuxt as HTML, for speed and SEO-optimisation. These are served through Express as a serverless function. All API requests are proxied through one handler function and routing is managed by Express.
 
-AWS recommends you review the security best practices recommended by the framework
-author of your selected sample application before running it in production. You
-should also regularly review and apply any available patches or associated security
-advisories for dependencies used within your application.
+The app folder contains folders for routes, tests and models. Documentation for these can be found at: https://github.com/biggora/caminte When a new model is added, the routes for it should be imported into the api.js file for them to be used. All api routes are proxied to /api to keep them separate from front-end routes.
+The views folder contains the front-end for the site. These are all vue components; however, the folders and files follow a naming convention enforced by nuxt. Nuxt will automatically generate routes and compile these files. For information on how stylesheets, VueJS components etc. should be implemented check out: https://nuxtjs.org/guide/
 
-Best Practices: https://docs.aws.amazon.com/codestar/latest/userguide/best-practices.html?icmpid=docs_acs_rm_sec
+To start the development server run "npm run dev". This will build the viewjs files using nuxt, check for code inconsistencies using jslint and start a server on localhost:3000. Most code /app should be able to be changed and tested without restarting the server and any changes to VueJS files should cause nuxt to rebuild.
+
+Deployment
+------------------
+If you wish to deploy, you should first run "serverless config credentials --provider aws --key key_id --secret secret_key" and "serverless login" to connect serverless to aws. The credentials can be found through IAS and should be for the serverless-admin user. There are a number of commands setup for node that should deploy automatically; however, these have not yet been tested with the pipeline and build system used. You should be able to trigger the build and deploy process through the AWS Codestar page for this project after commiting changes with Git.

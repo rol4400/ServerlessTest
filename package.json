@@ -1,13 +1,44 @@
 {
-    "name": "hello-world",
-    "description": "Sample NodeJs web application",
-    "version": "0.0.1",
-    "private": true,
-    "devDependencies": {
-        "mocha": "5.0.0",
-        "unit.js": "2.0.0"
-    },
+    "name": "serverlesstest3",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
     "scripts": {
-        "test": "mocha --recursive tests"
+        "test": "mocha -r should -R spec",
+        "dev": "node server.js",
+        "deploy-dev": "nuxt build && serverless deploy --stage dev",
+        "deploy-dev-fast": "nuxt build && serverless deploy --stage dev --function main",
+        "deploy-prod": "nuxt build && serverless deploy --stage prod"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "aws-serverless-express": "^3.2.0",
+        "axios": "^0.18.0",
+        "boom": "^4.2.0",
+        "caminte": "^0.3.3",
+        "express": "^4.16.3",
+        "lambda-wrapper": "^0.3.0",
+        "mysql": ">= 2.0.0",
+        "node-localstack": "0.0.2",
+        "npm": "^6.1.0",
+        "nuxt": "^1.4.1",
+        "serverless-apigw-binary": "^0.4.4",
+        "underscore": "^1.8.3"
+    },
+    "caminte": {
+        "adapter": "mysql"
+    },
+    "devDependencies": {
+        "eslint": "^5.0.1",
+        "eslint-loader": "^2.0.0",
+        "eslint-plugin-vue": "^4.5.0",
+        "istanbul": "^0.4.5",
+        "jshint": "2.x",
+        "mocha": "^3.0.2",
+        "serverless-offline": "^3.25.5",
+        "should": "^11.1.0",
+        "supertest": "^2.0.0",
+        "ws": "3.3.2"
     }
 }

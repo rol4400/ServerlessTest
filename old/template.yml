@@ -19,11 +19,14 @@ Parameters:
 #       Type: Canary10Percent5Minutes
 
 Resources:
-  FrontEnd:
+  HelloWorld:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.get
+      Handler: index.handler
       Runtime: nodejs4.3
+      Environment:
+        Variables:
+          NODE_ENV: production
       Role:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
@@ -33,19 +36,6 @@ Resources:
           Properties:
             Path: /
             Method: get
-            
-  BackEnd:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: index.post
-      Runtime: nodejs4.3
-      Environment:
-        Variables:
-          NODE_ENV: production
-      Role:
-        Fn::ImportValue:
-          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
-      Events:
         PostEvent:
           Type: Api
           Properties:
