@@ -7,6 +7,12 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project with Serverless' }
     ]
   },
+  css: [
+    // 'normalize.css',
+    // 'highlight.js/styles/github.css',
+    // './assets/scss/main.scss'
+  ],
+  // mode: 'spa',
   build: {
     vendor: ['axios']
   },

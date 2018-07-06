@@ -8,3 +8,6 @@ package-lock.json
 
 # nuxt build directory
 .nuxt
+
+# template.yml file is generated automatically by the build server
+template.yml
