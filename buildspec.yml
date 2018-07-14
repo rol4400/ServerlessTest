@@ -42,7 +42,7 @@ phases:
       - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
       
       # Deploy using the generated cloudformation template
-      - aws cloudformation deploy --template-file /codebuild/output/src200003594/src/template-export.yml --stack-name serverlesstest3-dev
+      - aws cloudformation deploy --template-file template-export.yml --s3-bucket $S3_BUCKET --stack-name serverlesstest3-dev
 
 artifacts:
   type: zip
