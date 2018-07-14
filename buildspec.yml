@@ -23,7 +23,7 @@ phases:
       - npm run build
       
       # Render view components with nuxt
-      - /node_modules/.bin/nuxt generate
+      - ./node_modules/.bin/nuxt generate
       
       # Deploy to dev stage
       - serverless deploy --stage dev
