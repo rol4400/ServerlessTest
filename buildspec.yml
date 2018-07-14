@@ -7,6 +7,9 @@ phases:
        # Install dependencies needed for running tests
       - npm install
       
+      # List node modules installed
+      - ls -ltr node_modules
+      
       # Upgrade AWS CLI to the latest version
       # - pip install --upgrade awscli
 
@@ -20,7 +23,7 @@ phases:
       - npm run build
       
       # Render view components with nuxt
-      - nuxt generate
+      - /node_modules/.bin/nuxt generate
       
       # Deploy to dev stage
       - serverless deploy --stage dev
