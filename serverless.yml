@@ -5,6 +5,7 @@ provider:
   runtime: nodejs8.10
   stage: dev
   region: us-east-2
+  role: arn:aws:iam::672998989107:role/CodeStarWorker-webappserverles-CodeBuild
   # deploymentBucket: aws-codestar-us-east-2-672998989107-serverlesstest-pipe
 
 package:
