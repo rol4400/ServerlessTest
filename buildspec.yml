@@ -26,7 +26,7 @@ phases:
       - ./node_modules/.bin/nuxt generate
       
       # Deploy to dev stage
-      - serverless deploy --stage dev
+      - serverless deploy --stage dev --verbose
 
       # - serverless deploy --stage dev | tee deploy.out 
       # Deploy using serverless framework and move the artifact to the deployment bucket
