@@ -3,14 +3,14 @@ service: serverlesstest3 # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: ${opt:stage} #read from console input
+  #stage: ${opt:stage} #read from console input
   region: us-east-2
   role: arn:aws:iam::672998989107:role/CodeStarWorker-serverlesstest-CodeBuild
   cfnRole: arn:aws:iam::672998989107:role/CodeStarWorker-serverlesstest-CodeBuild
   # deploymentBucket: aws-codestar-us-east-2-672998989107-serverlesstest-pipe
 
   stackTags:
-   Environment: ${opt:stage} #helpful for billing
+   #Environment: ${opt:stage} #helpful for billing
 
 package:
   exclude:
@@ -18,7 +18,7 @@ package:
 
 functions:
   main:
-    name: main_${opt:stage}
+    #name: main_${opt:stage}
     handler: handler.main
     events:
       - http: ANY {proxy+}
