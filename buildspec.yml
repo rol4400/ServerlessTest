@@ -53,5 +53,7 @@ phases:
 artifacts:
   type: zip
   files:
-    - *
-  discard-paths: no
+    - .serverless/*
+    - serverless.yml
+    - template-export.yml
+  discard-paths: yes
