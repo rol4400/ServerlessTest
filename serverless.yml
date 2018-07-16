@@ -12,9 +12,9 @@ provider:
   stackTags:
    #Environment: ${opt:stage} #helpful for billing
 
-package:
-  exclude:
-    - node_modules/**
+# package:
+#   exclude:
+#     - node_modules/**
 
 functions:
   main:

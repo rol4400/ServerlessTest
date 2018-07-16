@@ -55,5 +55,6 @@ artifacts:
   files:
     - .serverless/*
     - serverless.yml
+    - template.yml
     - template-export.yml
   discard-paths: yes
