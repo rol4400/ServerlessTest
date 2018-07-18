@@ -23,7 +23,13 @@ module.exports = {
   router: {
     base: '/'
   },
+
+  dev: false,
   build: {
+
+    publicPath: '/public',
+    extractCSS: true,
+
     /*
     ** Run ESLINT on save
     */

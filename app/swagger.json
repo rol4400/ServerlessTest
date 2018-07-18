@@ -1,0 +1,498 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Service API",
+        "description": "Service API",
+        "version": "1.0.0",
+        "termsOfService": "http://example.com/terms/",
+        "contact": {
+            "email": "api@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "api.example.com",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/v1",
+    "consumes": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "summary": "Save User",
+                "description": "Description for collection User",
+                "operationId": "saveUser",
+                "parameters": [
+                    {
+                        "name": "active",
+                        "type": "boolean",
+                        "in": "formData",
+                        "description": "Description for field active"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field name"
+                    },
+                    {
+                        "name": "email",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field email"
+                    },
+                    {
+                        "name": "password",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field password"
+                    },
+                    {
+                        "name": "note",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field note"
+                    },
+                    {
+                        "name": "created",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field created",
+                        "format": "date"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Operation create successful",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "422": {
+                        "$ref": "#/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Users List",
+                "description": "Description for collection User",
+                "operationId": "findUsers",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/skip"
+                    },
+                    {
+                        "$ref": "#/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/parameters/search"
+                    },
+                    {
+                        "$ref": "#/parameters/sort"
+                    },
+                    {
+                        "name": "user_id",
+                        "description": "The unique identifier for a User",
+                        "in": "query",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of users",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        },
+        "/users/truncate": {
+            "delete": {
+                "summary": "Truncate all of users",
+                "description": "Description for collection User",
+                "operationId": "truncateUsers",
+                "parameters": [],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "summary": "Get user by ID",
+                "description": "Returns a single user",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/user_id"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update an existing user",
+                "description": "Returns updated user",
+                "operationId": "updateUserById",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/user_id"
+                    },
+                    {
+                        "name": "active",
+                        "type": "boolean",
+                        "in": "formData",
+                        "description": "Description for field active"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field name"
+                    },
+                    {
+                        "name": "email",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field email"
+                    },
+                    {
+                        "name": "password",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field password"
+                    },
+                    {
+                        "name": "note",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field note"
+                    },
+                    {
+                        "name": "created",
+                        "type": "string",
+                        "in": "formData",
+                        "description": "Description for field created",
+                        "format": "date"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#/responses/404"
+                    },
+                    "422": {
+                        "$ref": "#/responses/422"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete user by ID",
+                "description": "Returns a single user",
+                "operationId": "deleteUserById",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/user_id"
+                    }
+                ],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "404": {
+                        "$ref": "#/responses/404"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        },
+        "/users/new": {
+            "get": {
+                "summary": "Create empty user",
+                "description": "Returns a single user",
+                "operationId": "emptyUser",
+                "parameters": [],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        },
+        "/users/count": {
+            "get": {
+                "summary": "Get amount of user",
+                "description": "Returns a count of user",
+                "operationId": "countUsers",
+                "parameters": [],
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Count"
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/responses/400"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500"
+                    },
+                    "default": {
+                        "$ref": "#/responses/default"
+                    }
+                }
+            }
+        }
+    },
+    "parameters": {
+        "skip": {
+            "name": "skip",
+            "type": "integer",
+            "in": "query",
+            "description": "Skip number of rows from ordered list",
+            "format": "int32",
+            "minimum": 0,
+            "default": 0
+        },
+        "limit": {
+            "name": "limit",
+            "type": "integer",
+            "in": "query",
+            "description": "Select number of rows from ordered list",
+            "format": "int32",
+            "minimum": 0,
+            "maximum": 100,
+            "default": 20
+        },
+        "search": {
+            "name": "search",
+            "type": "string",
+            "in": "query",
+            "description": "Search condition"
+        },
+        "sort": {
+            "name": "sort",
+            "type": "string",
+            "in": "query",
+            "description": "Sort order condition"
+        },
+        "user_id": {
+            "name": "user_id",
+            "description": "The unique identifier for a User",
+            "in": "path",
+            "type": "integer",
+            "format": "int64",
+            "required": true
+        }
+    },
+    "definitions": {
+        "Error": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "attributes": {
+                    "type": "object"
+                }
+            }
+        },
+        "Count": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "description": "Description for field active",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "Description for field name",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "Description for field email",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "Description for field password",
+                    "type": "string"
+                },
+                "note": {
+                    "description": "Description for field note",
+                    "type": "string"
+                },
+                "created": {
+                    "description": "Description for field created",
+                    "type": "string",
+                    "format": "date"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "responses": {
+        "400": {
+            "description": "Bad request",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            }
+        },
+        "404": {
+            "description": "Not found",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            }
+        },
+        "422": {
+            "description": "Validation exception",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            }
+        },
+        "500": {
+            "description": "Internal server error",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            }
+        },
+        "default": {
+            "description": "Unexpected error",
+            "schema": {
+                "$ref": "#/definitions/Error"
+            }
+        }
+    }
+}

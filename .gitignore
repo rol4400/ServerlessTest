@@ -11,3 +11,6 @@ package-lock.json
 
 # template.yml file is generated automatically by the build server
 template.yml
+
+# Credentials file
+.env.yml

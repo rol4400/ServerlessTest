@@ -3,14 +3,17 @@ service: serverlesstest3 # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
+  credentials: ${file(./.env.yml):credentials}
+
   #stage: ${opt:stage} #read from console input
   region: us-east-2
-  role: arn:aws:iam::672998989107:role/CodeStarWorker-serverlesstest-CodeBuild
-  cfnRole: arn:aws:iam::672998989107:role/CodeStarWorker-serverlesstest-CodeBuild
   # deploymentBucket: aws-codestar-us-east-2-672998989107-serverlesstest-pipe
 
   stackTags:
    #Environment: ${opt:stage} #helpful for billing
+
+  environment:
+    NODE_ENV: production
 
 # package:
 #   exclude:
@@ -32,6 +35,8 @@ custom:
   apigwBinary:
     types:
       - '*/*'
+    
+    # DATABASE_URL: ${file(./.env.yml):${opt:stage}.DATABASE_URL}
 
 # Use: `serverless config credentials --provider aws --key --secret` to setup aws credentials
 # Current credentials: `serverless config credentials --provider aws --key  AKIAI2QTJDWA62I VDPYA --secret 3Ccz7evfjeIFPdIS+JqkPRt6qFJxLwsighXGfb86`
