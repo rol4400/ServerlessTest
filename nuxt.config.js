@@ -13,35 +13,35 @@ module.exports = {
     // './assets/scss/main.scss'
   ],
   // mode: 'spa',
-  build: {
-    vendor: ['axios']
-  },
+
   srcDir: './views',
   performance: {
     gzip: false
   },
-  router: {
-    base: '/'
-  },
+  // router: {
+  //   base: '/'
+  // },
 
-  dev: false,
+  dev: true,
   build: {
 
-    publicPath: '/public',
-    extractCSS: true,
+    vendor: ['axios']
+    
+    // publicPath: '/public',
+    // extractCSS: true,
 
     /*
     ** Run ESLINT on save
     */
-    extend (config, ctx) {
-      if (ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
+    // extend (config, ctx) {
+    //   if (ctx.isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // }
   }
 }

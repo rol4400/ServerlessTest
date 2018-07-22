@@ -7,10 +7,10 @@
         "test": "mocha -r should -R spec app/test/tests.js",
         "dev": "node server.js",
         "generate": "nuxt generate",
-        "build": "nuxt build --universal",
+        "build": "nuxt build",
         "start": "nuxt start",
         "build-check": "nuxt build --analyze",
-        "deploy-dev": "nuxt generate && serverless deploy --verbose --stage dev",
+        "deploy-dev": "npm run build && serverless deploy --verbose --stage dev",
         "deploy-dev-fast": "nuxt build && serverless deploy --verbose --stage dev --function main",
         "deploy-prod": "nuxt build && serverless deploy --verbose --stage prod"
     },

@@ -1,3 +1,5 @@
+//process.env.NODE_ENV = 'production';
+
 // Import libraries
 const { Nuxt, Builder } = require('nuxt')
 const express = require('express')

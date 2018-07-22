@@ -1,6 +1,9 @@
 // Import libraries
 const { Nuxt, Builder } = require('nuxt')
-const app = require('express')()
+const path = require('path')
+const express = require('express')
+const app = express()
+//const app = require('express')()
 
 // Configure server settings
 const HOST = process.env.HOST || 'localhost'
@@ -9,6 +12,8 @@ const PORT = process.env.PORT || 3000
 
 process.env.HOST = HOST
 process.env.PORT = PORT
+
+process.env.NODE_ENV = 'production';
 
 // Import API routes seperate to nuxt routes
 app.use('/api', require('./app/api'))
@@ -20,6 +25,9 @@ config.dev = (process.env.NODE_ENV !== 'production')
 // Create a new nuxt instance using the configuration and import the
 // routes into express
 let nuxt = new Nuxt(config)
+
+// Serve front-end rendered static assets from nuxt
+app.use('/_nuxt', express.static(path.join(__dirname, '.nuxt', 'dist')))
 app.use(nuxt.render)
 
 // Extra logging if in development mode
@@ -33,5 +41,6 @@ if (config.dev) {
 
 // Start an express server and print the server's details to the console
 // Listen the server
-console.log(`Starting server on ${HOST}:${PORT}`)
 app.listen(PORT, HOST);
+
+console.log(`Server started on ${HOST}:${PORT}`)
