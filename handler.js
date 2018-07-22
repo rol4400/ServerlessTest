@@ -59,6 +59,6 @@ module.exports.main = (event, context) => {
   event.headers['Accept-Encoding'] = 'identity'
 
   // Proxy all API calls through to express's routing configured above
-  console.log('proxying event=', event)
+  //console.log('proxying event=', event)
   awsServerlessExpress.proxy(server, event, context)
 }
